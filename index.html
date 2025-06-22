@@ -12,96 +12,46 @@
     .card { border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin: 10px 0; }
     .results { margin-top: 30px; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+    #loading { text-align: center; padding: 40px; font-size: 1.2em; }
+    .spinner {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #3498db;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body>
   <h1>ARO 隔膜泵浦選型器</h1>
   <p>請從下方選擇對應的條件來快速找到合適的泵浦型號。</p>
-  <form id="filterForm" class="grid">
-    <label>尺寸
-      <select name="尺寸">
-        <option value="">全部</option>
-        <option value="1/4”" selected>1/4” (~20 LPM)</option>
-        <option value="3/8”">3/8” (20~50 LPM)</option>
-        <option value="1/2”">1/2” (20~50 LPM)</option>
-        <option value="3/4”">3/4” (50~100 LPM)</option>
-        <option value="1”">1” (50~100 LPM)</option>
-        <option value="1-1/2”">1-1/2” (100~180 LPM)</option>
-        <option value="2”">2” (180~280 LPM)</option>
-        <option value="3”">3” (>280 LPM)</option>
-      </select>
-    </label>
-    <label>接液材質
-      <select name="材質">
-        <option value="">全部</option>
-        <option value="Polypropylene（聚丙烯）">Polypropylene（聚丙烯）</option>
-        <option value="Conductive Polypropylene（導電聚丙烯）">Conductive Polypropylene（導電聚丙烯）</option>
-        <option value="Acetal（聚甲醛）">Acetal（聚甲醛）</option>
-        <option value="PVDF（聚偏氟乙烯）">PVDF（聚偏氟乙烯）</option>
-        <option value="Conductive PVDF（導電PVDF）">Conductive PVDF（導電PVDF）</option>
-      </select>
-    </label>
-    <label>座閥材質
-      <select name="座閥材質">
-        <option value="">全部</option>
-        <option value="Polypropylene（聚丙烯）">Polypropylene（聚丙烯）</option>
-        <option value="Acetal（聚甲醛）">Acetal（聚甲醛）</option>
-        <option value="PVDF（聚偏氟乙烯）">PVDF（聚偏氟乙烯）</option>
-        <option value="Stainless Steel（不鏽鋼）">Stainless Steel（不鏽鋼）</option>
-      </select>
-    </label>
-    <label>球閥材質
-      <select name="球材質">
-        <option value="">全部</option>
-        <option value="Santoprene（熱塑彈性體）">Santoprene（熱塑彈性體）</option>
-        <option value="Hytrel（杜邦熱塑彈性體）">Hytrel（杜邦熱塑彈性體）</option>
-        <option value="Nitrile（丁腈橡膠）">Nitrile（丁腈橡膠）</option>
-        <option value="Viton（氟橡膠）">Viton（氟橡膠）</option>
-        <option value="PTFE（鐵氟龍）">PTFE（鐵氟龍）</option>
-        <option value="Neoprene（氯丁橡膠）">Neoprene（氯丁橡膠）</option>
-        <option value="EPDM（三元乙丙橡膠）">EPDM（三元乙丙橡膠）</option>
-      </select>
-    </label>
-    <label>膜片材質
-      <select name="膜片材質">
-        <option value="">全部</option>
-        <option value="Santoprene（熱塑彈性體）">Santoprene（熱塑彈性體）</option>
-        <option value="Hytrel（杜邦熱塑彈性體）">Hytrel（杜邦熱塑彈性體）</option>
-        <option value="Nitrile（丁腈橡膠）">Nitrile（丁腈橡膠）</option>
-        <option value="Viton（氟橡膠）">Viton（氟橡膠）</option>
-        <option value="PTFE（鐵氟龍）">PTFE（鐵氟龍）</option>
-        <option value="Long-Life PTFE（長壽命鐵氟龍）">Long-Life PTFE（長壽命鐵氟龍）</option>
-      </select>
-    </label>
-    <label>接頭形式
-      <select name="接頭形式">
-        <option value="">全部</option>
-        <option value="NPT（美制管螺紋）">NPT（美制管螺紋）</option>
-        <option value="BSP（英制管螺紋）">BSP（英制管螺紋）</option>
-        <option value="ANSI/DIN Flange（法蘭）">ANSI/DIN Flange（法蘭）</option>
-      </select>
-    </label>
-    <label>電子控制
-      <select name="是否具備電子控制">
-        <option value="">全部</option>
-        <option value="是">是</option>
-        <option value="否">否</option>
-      </select>
-    </label>
-  </form>
+  <form id="filterForm" class="grid"></form>
 
   <div class="results" id="results">
-    <h2>搜尋結果</h2>
-    <div id="resultList"></div>
+    <div id="loading"><div class="spinner"></div> 載入資料中，請稍候...</div>
+    <div id="resultList" style="display:none;"></div>
   </div>
 
   <script>
     let pumpData = [];
 
     async function loadData() {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbxnQQSvXgDbtnmUeA2978JmMWoiVp46WOL3Tc7Xg_fO72tgS0Xytxwe5zYUBp4pMBXx/exec");
-      pumpData = await res.json();
-      filterAndRender();
+      try {
+        const res = await fetch("https://script.google.com/macros/s/AKfycbxnQQSvXgDbtnmUeA2978JmMWoiVp46WOL3Tc7Xg_fO72tgS0Xytxwe5zYUBp4pMBXx/exec");
+        pumpData = await res.json();
+        renderFilters();
+        filterAndRender();
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("resultList").style.display = "block";
+      } catch (err) {
+        document.getElementById("loading").innerText = "資料載入失敗，請稍後再試。";
+      }
     }
 
     function filterAndRender() {
@@ -129,7 +79,19 @@
       `).join('') : '<p>沒有符合條件的結果。</p>';
     }
 
-    document.getElementById("filterForm").addEventListener("change", filterAndRender);
+    function renderFilters() {
+      document.getElementById("filterForm").innerHTML = `
+        <label>尺寸<select name="尺寸"><option value="">全部</option><option value="1/4”">1/4”</option><option value="3/8”">3/8”</option><option value="1/2”">1/2”</option><option value="3/4”">3/4”</option><option value="1”">1”</option><option value="1-1/2”">1-1/2”</option><option value="2”">2”</option><option value="3”">3”</option></select></label>
+        <label>接液材質<select name="材質"><option value="">全部</option><option value="Polypropylene（聚丙烯）">Polypropylene（聚丙烯）</option><option value="Conductive Polypropylene（導電聚丙烯）">Conductive Polypropylene（導電聚丙烯）</option><option value="Acetal（聚甲醛）">Acetal（聚甲醛）</option><option value="PVDF（聚偏氟乙烯）">PVDF（聚偏氟乙烯）</option><option value="Conductive PVDF（導電PVDF）">Conductive PVDF（導電PVDF）</option></select></label>
+        <label>座閥材質<select name="座閥材質"><option value="">全部</option><option value="Polypropylene（聚丙烯）">Polypropylene（聚丙烯）</option><option value="Acetal（聚甲醛）">Acetal（聚甲醛）</option><option value="PVDF（聚偏氟乙烯）">PVDF（聚偏氟乙烯）</option><option value="Stainless Steel（不鏽鋼）">Stainless Steel（不鏽鋼）</option></select></label>
+        <label>球閥材質<select name="球材質"><option value="">全部</option><option value="Santoprene（熱塑彈性體）">Santoprene（熱塑彈性體）</option><option value="Hytrel（杜邦熱塑彈性體）">Hytrel（杜邦熱塑彈性體）</option><option value="Nitrile（丁腈橡膠）">Nitrile（丁腈橡膠）</option><option value="Viton（氟橡膠）">Viton（氟橡膠）</option><option value="PTFE（鐵氟龍）">PTFE（鐵氟龍）</option><option value="Neoprene（氯丁橡膠）">Neoprene（氯丁橡膠）</option><option value="EPDM（三元乙丙橡膠）">EPDM（三元乙丙橡膠）</option></select></label>
+        <label>膜片材質<select name="膜片材質"><option value="">全部</option><option value="Santoprene（熱塑彈性體）">Santoprene（熱塑彈性體）</option><option value="Hytrel（杜邦熱塑彈性體）">Hytrel（杜邦熱塑彈性體）</option><option value="Nitrile（丁腈橡膠）">Nitrile（丁腈橡膠）</option><option value="Viton（氟橡膠）">Viton（氟橡膠）</option><option value="PTFE（鐵氟龍）">PTFE（鐵氟龍）</option><option value="Long-Life PTFE（長壽命鐵氟龍）">Long-Life PTFE（長壽命鐵氟龍）</option></select></label>
+        <label>接頭形式<select name="接頭形式"><option value="">全部</option><option value="NPT（美制管螺紋）">NPT（美制管螺紋）</option><option value="BSP（英制管螺紋）">BSP（英制管螺紋）</option><option value="ANSI/DIN Flange（法蘭）">ANSI/DIN Flange（法蘭）</option></select></label>
+        <label>電子控制<select name="是否具備電子控制"><option value="">全部</option><option value="是">是</option><option value="否">否</option></select></label>
+      `;
+      document.getElementById("filterForm").addEventListener("change", filterAndRender);
+    }
+
     window.onload = loadData;
   </script>
 </body>
