@@ -43,7 +43,7 @@
 
     async function loadData() {
       try {
-        const res = await fetch("https://script.google.com/macros/s/AKfycbxnQQSvXgDbtnmUeA2978JmMWoiVp46WOL3Tc7Xg_fO72tgS0Xytxwe5zYUBp4pMBXx/exec");
+        const res = await fetch("pump_data_static.json");
         pumpData = await res.json();
         renderFilters();
         filterAndRender();
