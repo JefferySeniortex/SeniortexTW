@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARO原廠專業維修服務</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            background-color: #f8f8f8; /* Keeping a light background for overall page */
+        }
+        /* Custom styles for better readability and aesthetics */
+        .section-padding {
+            padding: 4rem 1rem; /* Default padding for sections */
+        }
+        @media (min-width: 768px) {
+            .section-padding {
+                padding: 6rem 2rem; /* Larger padding for medium screens and up */
+            }
+        }
+        @media (min-width: 1024px) {
+            .section-padding {
+                padding: 8rem 4rem; /* Even larger padding for large screens and up */
+            }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .hero-section {
+            background-color: #8B0000; /* Darker Red background for hero */
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-image {
+            width: 100%;
+            height: 400px; /* Fixed height for hero image */
+            object-fit: cover;
+            opacity: 0.6; /* Slightly transparent overlay */
+        }
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 90%;
+        }
+        .service-item-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+            padding: 1.5rem;
+            height: 100%; /* Ensure cards in a row have equal height */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px; /* Fixed height for product images */
+            object-fit: contain; /* Ensure image fits without cropping */
+            background-color: #fef2f2; /* Very light red background for images */
+            padding: 1rem;
+        }
+        .product-card-content {
+            padding: 1.5rem;
+            flex-grow: 1; /* Allow content to take available space */
+        }
+        .contact-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+        }
+        .line-qr-code {
+            width: 150px; /* Fixed width for QR code */
+            height: 150px; /* Fixed height for QR code */
+            margin: 0 auto 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .footer-link {
+            color: #fca5a5; /* Light red for footer links */
+            text-decoration: none;
+        }
+        .footer-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="bg-red-800 text-white py-4 shadow-md">
+        <div class="container flex justify-between items-center px-4">
+            <!-- Company Logo -->
+            <a href="#" class="text-2xl font-bold text-white">伸機貿易</a>
+            <!-- Navigation -->
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#" class="hover:text-red-300 transition duration-300 rounded-md p-2">首頁</a></li>
+                    <li><a href="#" class="hover:text-red-300 transition duration-300 rounded-md p-2">關於我們</a></li>
+                    <li><a href="#" class="hover:text-red-300 transition duration-300 rounded-md p-2">產品介紹</a></li>
+                    <li><a href="#" class="hover:text-red-300 transition duration-300 rounded-md p-2">維修服務</a></li>
+                    <li><a href="#" class="hover:text-red-300 transition duration-300 rounded-md p-2">聯絡我們</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section relative py-20 md:py-32 lg:py-40">
+        <!-- Placeholder for hero image. Replace 'your-hero-image.jpg' with your actual image URL -->
+        <img src="https://placehold.co/1200x400/333/FFF?text=華人維修人員專注工作照片" alt="華人維修人員專注工作" class="hero-image">
+        <div class="hero-content">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">ARO原廠專業維修服務</h1>
+            <p class="text-xl md:text-2xl lg:text-3xl font-light">唯一授權，專業修復，讓您的ARO泵浦重獲新生。</p>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="section-padding bg-red-50">
+        <div class="container">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-red-800">為什麼選擇ARO原廠專業維修？</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="service-item-card">
+                    <h3 class="text-xl font-semibold mb-4 text-red-700">專業技術，值得信賴</h3>
+                    <p class="text-gray-600">我們的維修團隊，均經過嚴格的ARO原廠培訓與認證，具備最先進的維修知識與實務經驗，確保您的泵浦獲得最高品質的專業照護。我們不僅是維修，更是技術與經驗的傳承，為您的設備壽命與效能把關。</p>
+                </div>
+                <div class="service-item-card">
+                    <h3 class="text-xl font-semibold mb-4 text-red-700">原廠零件，品質保證</h3>
+                    <p class="text-gray-600">我們僅使用ARO原廠生產的認證零件。每一個零件都經過嚴格的品質控管，確保與您的泵浦完美匹配，發揮最佳性能。選擇原廠零件，不僅是確保耐用性與符合原廠規格，更是對您的設備與生產流程的長遠保障。</p>
+                </div>
+                <div class="service-item-card">
+                    <h3 class="text-xl font-semibold mb-4 text-red-700">嚴謹檢測，性能再造</h3>
+                    <p class="text-gray-600">每一次維修作業後，我們都會進行多項嚴格的性能測試，包括耐壓測試、洩漏測試、壓力保持測試、飽壓試水運作測試。透過這些測試，我們確保修復後的泵浦不僅能正常運作，更能恢復到接近出廠時的最佳狀態。</p>
+                </div>
+                <div class="service-item-card">
+                    <h3 class="text-xl font-semibold mb-4 text-red-700">即時通報，安心掌握進度</h3>
+                    <p class="text-gray-600">從您送修的那一刻起，我們將提供全程透明的服務。無論是泵浦收件、檢修報價、維修進度，到最終的送回，我們都會透過Line或電話即時回報，讓您隨時掌握維修狀況，安心無虞。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Process Section -->
+    <section id="service-process" class="section-padding bg-white">
+        <div class="container">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-red-800">原廠維修流程與服務項目</h2>
+
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6 text-red-700 text-center md:text-left">我們的服務流程</h3>
+                <ol class="list-decimal list-inside space-y-4 text-lg text-gray-600">
+                    <li class="bg-red-50 p-4 rounded-lg shadow-sm">
+                        <span class="font-medium text-red-700">聯絡與預約：</span> 透過公司電話或官方Line預約，並約定收送件日期。
+                    </li>
+                    <li class="bg-red-50 p-4 rounded-lg shadow-sm">
+                        <span class="font-medium text-red-700">送修或到廠取件：</span> 您可選擇親自送件，或由我們安排專人到府接貨。
+                    </li>
+                    <li class="bg-red-50 p-4 rounded-lg shadow-sm">
+                        <span class="font-medium text-red-700">檢測與報價：</span> 收到泵浦後，我們將在3個工作天內完成檢測，並提供詳細的報價單。
+                    </li>
+                    <li class="bg-red-50 p-4 rounded-lg shadow-sm">
+                        <span class="font-medium text-red-700">維修作業：</span> 確認報價後，我們將立即啟動維修，一般維修需約5個工作天完成。
+                    </li>
+                    <li class="bg-red-50 p-4 rounded-lg shadow-sm">
+                        <span class="font-medium text-red-700">交件與追蹤：</span> 維修完成後，我們將安排物流或專人親送，並提供售後技術諮詢。
+                    </li>
+                </ol>
+            </div>
+
+            <div>
+                <h3 class="text-2xl font-semibold mb-6 text-red-700 text-center md:text-left">我們的維修項目</h3>
+                <ul class="list-disc list-inside space-y-4 text-lg text-gray-600">
+                    <li class="bg-red-50 p-4 rounded-lg shadow-sm">
+                        <span class="font-medium text-red-700">基礎檢查與清潔：</span> 包含泵浦外部清潔、檢查是否有洩漏與結構損壞，以及空氣閥、隔膜等關鍵部件的初步檢測。
+                    </li>
+                    <li class="bg-red-50 p-4 rounded-lg shadow-sm">
+                        <span class="font-medium text-red-700">部件更換與維修：</span> 更換磨損部件如隔膜、O型環、閥球座、氣室、中心軸、滑塊等，並針對嚴重故障的泵浦進行全面拆解與修復。
+                    </li>
+                    <li class="bg-red-50 p-4 rounded-lg shadow-sm">
+                        <span class="font-medium text-red-700">性能測試與報告：</span> 提供全面的性能恢復與測試報告，為您的泵浦效能提供數據證明（需額外收費）。
+                    </li>
+                    <li class="bg-red-50 p-4 rounded-lg shadow-sm">
+                        <span class="font-medium text-red-700">特殊服務：</span> 我們的工程師將透過官方Line、Email或電話，為您提供專業的技術諮詢。
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Proof Section -->
+    <section id="quality-proof" class="section-padding bg-red-50">
+        <div class="container">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-red-800">原廠零件，高品質保證</h2>
+            <p class="text-center text-lg text-gray-600 mb-10">選擇原廠零件，如同為您的泵浦注入新生命。以下為我們部分代表性的泵浦與原廠零件，其卓越品質與精準設計，是確保泵浦高效穩定運作的基石。</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <img src="12-non-metallic-diaphragm-pump.webp" alt="ARO非金屬隔膜泵浦" onerror="this.onerror=null;this.src='https://placehold.co/400x200/CCC/333?text=圖片載入失敗';">
+                    <div class="product-card-content">
+                        <h3 class="text-xl font-semibold mb-2 text-red-700">ARO非金屬隔膜泵浦</h3>
+                        <p class="text-gray-600">透明外殼設計，可直接觀察內部運作，方便維護。適用於需要高度清潔與易於監控的流體傳輸。</p>
+                    </div>
+                </div>
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <img src="2-pro-non-metallic.webp" alt="ARO Pro系列非金屬隔膜泵浦" onerror="this.onerror=null;this.src='https://placehold.co/400x200/CCC/333?text=圖片載入失敗';">
+                    <div class="product-card-content">
+                        <h3 class="text-xl font-semibold mb-2 text-red-700">ARO Pro系列非金屬隔膜泵浦</h3>
+                        <p class="text-gray-600">輕量化、抗腐蝕設計，適用於各種化學流體輸送。其簡潔的結構設計，確保維護的便捷性與長久耐用。</p>
+                    </div>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="product-card">
+                    <img src="2-pro-metallic.webp" alt="ARO Pro系列金屬隔膜泵浦" onerror="this.onerror=null;this.src='https://placehold.co/400x200/CCC/333?text=圖片載入失敗';">
+                    <div class="product-card-content">
+                        <h3 class="text-xl font-semibold mb-2 text-red-700">ARO Pro系列金屬隔膜泵浦</h3>
+                        <p class="text-gray-600">緊湊的黑色金屬外觀，適用於對空間有要求的工業應用。其堅固的材質與精密製造，確保高可靠性與卓越性能。</p>
+                    </div>
+                </div>
+                <!-- Product Card 4 -->
+                <div class="product-card">
+                    <img src="3-exp-metallic-2.webp" alt="ARO EXP系列金屬隔膜泵浦" onerror="this.onerror=null;this.src='https://placehold.co/400x200/CCC/333?text=圖片載入失敗';">
+                    <div class="product-card-content">
+                        <h3 class="text-xl font-semibold mb-2 text-red-700">ARO EXP系列金屬隔膜泵浦</h3>
+                        <p class="text-gray-600">堅固耐用的金屬外殼，能承受嚴苛的工業環境。其卓越的結構設計，確保在極高壓力下依然保持穩定高效。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-white">
+        <div class="container">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-red-800">立即聯繫，啟動您的專業維修</h2>
+            <p class="text-center text-lg text-gray-600 mb-10">若您的ARO泵浦需要維修服務或技術諮詢，請立即與我們聯繫。</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- LINE Contact Card -->
+                <div class="contact-card">
+                    <h3 class="text-2xl font-semibold mb-4 text-red-700">立即加入伸機官方LINE</h3>
+                    <img src="3bd83288-2998-4e6f-9240-47ee3ba2189d.png" alt="LINE QR Code" class="line-qr-code" onerror="this.onerror=null;this.src='https://placehold.co/150x150/CCC/333?text=QR Code載入失敗';">
+                    <p class="text-lg text-gray-600 mb-2">或搜尋LINE ID：<span class="font-bold text-red-600">@247nqzuj</span></p>
+                    <p class="text-md text-gray-500">專業工程師即時回覆</p>
+                </div>
+                <!-- Phone Contact Card -->
+                <div class="contact-card">
+                    <h3 class="text-2xl font-semibold mb-4 text-red-700">撥打電話諮詢</h3>
+                    <p class="text-4xl font-bold text-red-600 mb-4">02-2321-5906</p>
+                    <p class="text-lg text-gray-600">週一至週五 08:30 - 17:30</p>
+                </div>
+            </div>
+
+            <!-- Additional Contact Info -->
+            <div class="text-center text-gray-700 space-y-2">
+                <p class="text-lg">
+                    <span class="font-semibold">官方網站：</span>
+                    <a href="https://www.seniortex.com.tw/" target="_blank" class="text-red-600 hover:underline">https://www.seniortex.com.tw/</a>
+                </p>
+                <p class="text-lg">
+                    <span class="font-semibold">官方維修信箱：</span>
+                    <a href="mailto:support@seniortex.com.tw" class="text-red-600 hover:underline">support@seniortex.com.tw</a>
+                </p>
+                <p class="text-lg">
+                    <span class="font-semibold">維修中心地址：</span>
+                    新北市中和區中山路二段506-1號
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-red-900 text-red-300 py-10">
+        <div class="container text-center">
+            <p class="mb-4">Copyright © 2025 伸機貿易. All Rights Reserved.</p>
+            <div class="space-x-4">
+                <span class="font-semibold text-red-400">延伸閱讀：</span>
+                <a href="https://www.arozone.com/en/news/pirate-parts-the-risky-reality/" target="_blank" class="footer-link">ARO仿冒零件：風險現實</a>
+                <span class="text-red-500">|</span>
+                <a href="https://www.arozone.com/en/tools/blog/what-is-the-maximum-capacity-of-aodd-pump/" target="_blank" class="footer-link">ARO氣動雙隔膜泵的最大能力</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
